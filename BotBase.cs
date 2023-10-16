@@ -148,11 +148,11 @@ public class BotBase
 
 	public async Task<string> CheckWebhook(string url)
 	{
-		var webhookInfo = await Telegram.GetWebhookInfoAsync();
+		var webhookInfo = await Bot.GetWebhookInfoAsync();
 		string result = $"{BotName} is running";
 		if (webhookInfo.Url != url)
 		{
-			await Telegram.SetWebhookAsync(url);
+			await Bot.SetWebhookAsync(url);
 			result += " and now registered as Webhook";
 		}
 		return $"{result}\n\nLast webhook error: {webhookInfo.LastErrorDate} {webhookInfo.LastErrorMessage}";
